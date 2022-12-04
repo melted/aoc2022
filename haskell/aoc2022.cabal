@@ -13,42 +13,26 @@ build-type:         Simple
 extra-doc-files:    CHANGELOG.md
 -- extra-source-files:
 
-common warnings
-    ghc-options: -Wall
+common appconf
+    build-depends:
+        base ^>=4.17.0.0,
+        containers,
+        aoc2022
+
+    hs-source-dirs:   app
+    default-language: GHC2021
 
 library
-    import:           warnings
     exposed-modules:  Advent
-    -- other-modules:
-    -- other-extensions:
     build-depends:    base ^>=4.17.0.0,
                       containers
     hs-source-dirs:   lib
     default-language: GHC2021
 
 executable day4
-    import:           warnings
+    import:           appconf
     main-is:          Day4.hs
-    -- other-modules:
-    -- other-extensions:
-    build-depends:
-        base ^>=4.17.0.0,
-        containers,
-        aoc2022
-
-    hs-source-dirs:   app
-    default-language: GHC2021
-
 
 executable day5
-    import:           warnings
+    import:           appconf
     main-is:          Day5.hs
-    -- other-modules:
-    -- other-extensions:
-    build-depends:
-        base ^>=4.17.0.0,
-        containers,
-        aoc2022
-
-    hs-source-dirs:   app
-    default-language: GHC2021
