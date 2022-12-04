@@ -18,10 +18,11 @@ common warnings
 
 library
     import:           warnings
-    exposed-modules:  MyLib
+    exposed-modules:  Advent
     -- other-modules:
     -- other-extensions:
-    build-depends:    base ^>=4.17.0.0
+    build-depends:    base ^>=4.17.0.0,
+                      containers
     hs-source-dirs:   lib
     default-language: GHC2021
 
@@ -32,6 +33,7 @@ executable day4
     -- other-extensions:
     build-depends:
         base ^>=4.17.0.0,
+        containers,
         aoc2022
 
     hs-source-dirs:   app
@@ -45,6 +47,7 @@ executable day5
     -- other-extensions:
     build-depends:
         base ^>=4.17.0.0,
+        containers,
         aoc2022
 
     hs-source-dirs:   app
