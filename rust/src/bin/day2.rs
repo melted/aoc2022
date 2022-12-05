@@ -1,6 +1,6 @@
 
 
-static DATA : &str = include_str!("../../data/input2.txt");
+static DATA : &str = include_str!("../../../data/input2.txt");
 
 fn main() {
     let rounds = parse_data(DATA);

@@ -1,5 +1,5 @@
 
-static DATA : &str = include_str!("../../data/input1.txt");
+static DATA : &str = include_str!("../../../data/input1.txt");
 
 fn main() {
     let elves = parse_data(DATA);

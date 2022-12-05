@@ -1,7 +1,7 @@
 use std::collections::HashSet;
 
 
-static DATA : &str = include_str!("../../data/input3.txt");
+static DATA : &str = include_str!("../../../data/input3.txt");
 
 fn main() {
     let data = parse_data(DATA);
