@@ -11,4 +11,4 @@ allUnique xs = length (nub xs) == length xs
 
 windows n xs = [ take n m | m <- tails xs ]
 
-findPacket n xs = fmap (n+) $ findIndex allUnique (windows n xs)
+findPacket n xs = (n+) <$> findIndex allUnique (windows n xs)
