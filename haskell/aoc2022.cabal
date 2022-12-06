@@ -36,3 +36,8 @@ executable day4
 executable day5
     import:           appconf
     main-is:          Day5.hs
+
+executable day6
+    import:           appconf
+    main-is:          Day6.hs
+
