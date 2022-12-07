@@ -17,7 +17,9 @@ common appconf
     build-depends:
         base ^>=4.17.0.0,
         containers,
-        aoc2022
+        aoc2022,
+        attoparsec,
+        text
 
     hs-source-dirs:   app
     default-language: GHC2021
@@ -25,6 +27,7 @@ common appconf
 library
     exposed-modules:  Advent
     build-depends:    base ^>=4.17.0.0,
+                      attoparsec,
                       containers
     hs-source-dirs:   lib
     default-language: GHC2021
@@ -40,4 +43,10 @@ executable day5
 executable day6
     import:           appconf
     main-is:          Day6.hs
+
+executable day7
+    import:           appconf
+    main-is:          Day7.hs
+    build-depends:    attoparsec  
+
 
