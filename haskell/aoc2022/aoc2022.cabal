@@ -47,6 +47,10 @@ executable day6
 executable day7
     import:           appconf
     main-is:          Day7.hs
-    build-depends:    attoparsec  
+    build-depends:    attoparsec
+
+executable day8
+    import:           appconf
+    main-is:          Day8.hs
 
 
