@@ -53,4 +53,8 @@ executable day8
     import:           appconf
     main-is:          Day8.hs
 
+executable day9
+    import:           appconf
+    main-is:          Day9.hs
+
 
