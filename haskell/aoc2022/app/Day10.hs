@@ -36,5 +36,5 @@ chunk n xs = splitter [] xs
 
 display m = chunk 40 $ map displayCycle [1..240]
     where
-        reg n = fromMaybe 1 $ snd <$> M.lookupLE n m
+        reg n = fromJust $ snd <$> M.lookupLE n m
         displayCycle n = if abs (reg n - mod (n-1) 40) <= 1 then '#' else '.'
