@@ -61,4 +61,7 @@ executable day10
     import:           appconf
     main-is:          Day10.hs
 
+executable day11
+    import:           appconf
+    main-is:          Day11.hs
 
