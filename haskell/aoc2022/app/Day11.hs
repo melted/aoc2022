@@ -19,7 +19,6 @@ main = do
     let result = head $ drop 10000 $ iterate (playRound False) input
     print $ score result
 
-
 score monkeys = product $ take 2 $ sortBy (comparing negate) $ map inspected $ M.elems monkeys
 
 playRound part1 monkeys = foldl (handleMonkey part1) monkeys [0..(length monkeys)-1]
