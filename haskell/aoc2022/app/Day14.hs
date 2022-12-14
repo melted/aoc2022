@@ -4,7 +4,6 @@ import Data.Text (pack)
 import Data.Attoparsec.Text
 import qualified Data.Set as S
 
-
 inputData = pack <$> readFile "D:/Niklas/repos/aoc2022/data/input14.txt"
 
 main = do
@@ -26,11 +25,11 @@ rocks _ _ = error "Angled line"
 simulate endCond blockRule start = fall (500,0) start
     where
         fall (x, y) obstacles | endCond y obstacles = length obstacles - length start
-        fall (x, y) obstacles | blockRule (x, y+1) obstacles = if not $ blockRule (x-1, y+1) obstacles 
-                                                                  then fall (x-1, y+1) obstacles
-                                                                    else if not $ blockRule (x+1, y+1) obstacles
-                                                                        then fall (x+1, y+1) obstacles
-                                                                        else fall (500, 0) (S.insert (x,y) obstacles)
+        fall (x, y) obstacles | blockRule (x, y+1) obstacles = if blockRule (x-1, y+1) obstacles
+                                                                  then if blockRule (x+1, y+1) obstacles
+                                                                        then fall (500, 0) (S.insert (x,y) obstacles)
+                                                                        else fall (x+1, y+1) obstacles
+                                                                  else fall (x-1, y+1) obstacles
         fall (x, y) obstacles = fall (x, y+1) obstacles
 
 parseLine :: Parser [(Int, Int)]
