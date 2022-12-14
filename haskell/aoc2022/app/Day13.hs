@@ -11,7 +11,7 @@ inputData = pack <$> readFile "D:/Niklas/repos/aoc2022/data/input13.txt"
 main = do
     input <- inputData
     let grouped = parseAll input
-    let indexed = zip [1..] grouped
+    let indexed = zip [1..] grouped 
     let result = sum $ map fst $ filter (\(_,(a,b)) -> a <= b) indexed
     print result
     let (l, r) = unzip grouped
