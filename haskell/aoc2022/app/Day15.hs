@@ -5,7 +5,6 @@ import Data.Attoparsec.Text
 import Data.Maybe
 import Data.List
 import Data.Ord
-import Debug.Trace
 import qualified Data.Set as S
 
 main = do
@@ -14,6 +13,7 @@ main = do
     print $ sortBy (comparing fst) $ mapMaybe (project 2000000) points
     let (x,y) = findPoint points ((0,0), 4000000)
     print $ x*4000000+y
+    print $ points
 
 inputData = pack <$> readFile "D:/Niklas/repos/aoc2022/data/input15.txt"
 
@@ -36,6 +36,8 @@ parseAll input = case parseOnly (sepBy parseLine endOfLine) input of
                     Right v -> v
 
 range ((x, y), (x2, y2)) = abs (x-x2) + abs(y-y2)
+
+dist s t = range (fst s, fst t) - (range s + range t)
 
 project yy s@((x, y), (x2,y2)) = if xr >= 0 then Just (x-xr, x+xr) else Nothing
     where

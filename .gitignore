@@ -1,4 +1,7 @@
 target
 Cargo.lock
+.idea
+csharp/day16/bin
+csharp/day16/obj
 
 dist-newstyle
