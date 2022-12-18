@@ -1,8 +1,6 @@
 import qualified Data.Set as S
 import Data.Maybe
-import Debug.Trace
 import Data.Char
-
 import qualified Data.Map as M
 
 inputData = readFile "D:/Niklas/repos/aoc2022/data/input17.txt"
@@ -59,7 +57,6 @@ extractTop xs = S.filter (\(y,x) -> y >= lowest) xs
 normalize xs = S.map (\(y,x) -> (y-mm,x)) xs
     where
         mm = fromMaybe 0 $ S.lookupMin (S.map fst xs)
-
 
 height obs = fst $ fromMaybe (0,0) $ S.lookupMax obs
 

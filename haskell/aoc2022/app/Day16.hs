@@ -33,7 +33,7 @@ solve m dists start nodes = go start S.empty nodes 30 0
                 newScore = if S.member start done then score else flow*nt+score
                 subgo l = go l (S.insert start done) (S.delete l left) (nt-1) newScore
 
-inputData = pack <$> readFile "D:/Niklas/repos/aoc2022/data/test16.txt"
+inputData = pack <$> readFile "D:/Niklas/repos/aoc2022/data/input16.txt"
 
 parseLine :: Parser (Text, (Int, [Text]))
 parseLine = do
