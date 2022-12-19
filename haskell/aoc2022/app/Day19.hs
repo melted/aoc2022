@@ -43,10 +43,26 @@ work pile robots = Mat {
 run bp 0 sols = maximum $ S.toList $ sols
 run bp minute states = run bp (minute-1) newStates
     where
-        buyOre (pile, robots) = if (ore pile >= (oreCost bp)) && (ore robots) < (max (clayCost bp) $ max (fst (obsidianCost bp)) (fst (geodeCost bp))) then Just (pile { ore = ore pile - oreCost bp }, robots { ore = ore robots + 1}) else Nothing
-        buyClay (pile, robots)= if (ore pile >= (clayCost bp)) && (clay robots) < (snd (obsidianCost bp)) then Just (pile { ore = ore pile - clayCost bp }, robots { clay = clay robots + 1}) else Nothing
-        buyObsidian (pile, robots) = if (ore pile >= fst (obsidianCost bp) && clay pile >= snd (obsidianCost bp)) &&(obsidian robots) < (snd (geodeCost bp)) then Just (pile { ore = (ore pile) - fst (obsidianCost bp), clay = clay pile - snd (obsidianCost bp) }, robots { obsidian = obsidian robots + 1}) else Nothing
-        buyGeode (pile, robots) = if (ore pile >= fst (geodeCost bp) && obsidian pile >= snd (geodeCost bp)) then Just (pile { ore = ore pile - fst (geodeCost bp), obsidian = obsidian pile - snd (geodeCost bp) }, robots { geode = geode robots + 1}) else Nothing
+        buyOre (pile, robots) = if ore pile >= (oreCost bp) && 
+                                   ore robots < max (clayCost bp) (max (fst $ obsidianCost bp) (fst $ geodeCost bp)) 
+                                    then Just (pile { ore = ore pile - oreCost bp }, robots { ore = ore robots + 1}) 
+                                    else Nothing
+        buyClay (pile, robots)= if ore pile >= (clayCost bp) &&
+                                   clay robots < snd (obsidianCost bp)
+                                   then Just (pile { ore = ore pile - clayCost bp }, robots { clay = clay robots + 1}) 
+                                   else Nothing
+        buyObsidian (pile, robots) = if ore pile >= fst (obsidianCost bp) && 
+                                        clay pile >= snd (obsidianCost bp) &&
+                                        obsidian robots < snd (geodeCost bp)
+                                        then Just (pile { ore = (ore pile) - fst (obsidianCost bp), 
+                                                   clay = clay pile - snd (obsidianCost bp) }, 
+                                                   robots { obsidian = obsidian robots + 1}) 
+                                        else Nothing
+        buyGeode (pile, robots) = if ore pile >= fst (geodeCost bp) && obsidian pile >= snd (geodeCost bp) 
+                                    then Just (pile { ore = ore pile - fst (geodeCost bp), 
+                                                      obsidian = obsidian pile - snd (geodeCost bp) }, 
+                                                      robots { geode = geode robots + 1})
+                                    else Nothing
         moves pr  = [pr] ++ mapMaybe (\f -> f pr)[buyClay, buyOre, buyGeode, buyObsidian]
         updateState (pile, robots) = S.fromList $ map (\(p, nr) -> (work p robots, nr)) $ moves (pile,robots)
         newStates = purge  $ S.unions $ S.map updateState states
@@ -64,4 +80,5 @@ parseLine str = Blueprint {
                     geodeCost = (go, gob)
                 }
     where
-        [id, ore, clay, oo, oc, go, gob] = map read $ filter (all isDigit) $ map (takeWhile (/= ':')) $ words str
+        [id, ore, clay, oo, oc, go, gob] = map read $ filter (all isDigit) $
+                                                 map (takeWhile (/= ':')) $ words str
