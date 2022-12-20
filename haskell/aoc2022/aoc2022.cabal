@@ -93,7 +93,10 @@ executable day18
     import:           appconf
     main-is:          Day18.hs
 
-
 executable day19
     import:           appconf
     main-is:          Day19.hs
+
+executable day20
+    import:           appconf
+    main-is:          Day20.hs
