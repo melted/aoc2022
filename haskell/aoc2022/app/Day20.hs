@@ -1,8 +1,5 @@
 import qualified Data.Sequence as S
-import qualified Data.IntMap as I
-import Control.Applicative
 import Data.Maybe
-import Debug.Trace
 
 inputData = readFile "D:/Niklas/repos/aoc2022/data/input20.txt"
 
