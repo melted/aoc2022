@@ -41,11 +41,11 @@ find monkeys a b = go 0 10000000000000
                                                         if signum (val z) == signum (val y)
                                                             then go x z
                                                             else go z y
-        go _ _ = error "cam't bisect"
+        go _ _ = error "can't bisect"
  
 parseMonkey :: Parser (String, Expr)
 parseMonkey = do
-    name <- many' letter
+    name <- many letter
     string ": "
     expr <- parseExpr
     return (name, expr)
@@ -58,7 +58,6 @@ parseCalc = do
     space
     b <- many letter
     return $ Calc (op opChar) a b
-
 
 parseAll input = case parseOnly (sepBy parseMonkey endOfLine) input of
                     Left err -> error err
