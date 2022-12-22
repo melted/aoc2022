@@ -1,7 +1,4 @@
-{-# LANGUAGE OverloadedStrings #-}
 
-import Data.Text (pack)
-import Data.Attoparsec.Text
 import Data.Maybe
 import Data.List
 import Data.Ord
