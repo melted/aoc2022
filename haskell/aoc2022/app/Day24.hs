@@ -6,8 +6,6 @@ import Debug.Trace
 
 inputData = readFile "../../data/input24.txt"
 
-data Wind = N | S | W | E deriving (Show, Eq, Ord, Enum)
-
 data State = State {
     north :: S.Set (Int, Int),
     south :: S.Set (Int, Int),
@@ -50,6 +48,7 @@ moves (x,y) = filter (\(x,y)-> y>=0) [(x,y),(x,y-1),(x,y+1),(x-1,y),(x+1,y)]
 
 invalidMoves state = S.unions [east state, west state, north state,
                                south state, walls state]
+
 findWay target start state t = go t (S.singleton start)
     where
         winds = I.fromList $ zip [0..10000] (iterate updateState state) 
